@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="activities.MainActivity">
+
+    <TextView
+        android:id="@+id/mealText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="78dp"
+        android:text="Meal"
+        app:layout_constraintBottom_toTopOf="@+id/mealText"
+        app:layout_constraintEnd_toEndOf="@+id/mealText"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/calcButton"
+        android:layout_width="179dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="500dp"
+        android:text="Calculate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/showMealButton"
+        android:layout_width="163dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="20dp"
+        android:text="Show Meal"
+        app:layout_constraintBottom_toTopOf="@+id/calcButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/addMealButton"
+        android:layout_width="131dp"
+        android:layout_height="99dp"
+        android:layout_marginBottom="48dp"
+        android:text="Add Meal"
+        app:layout_constraintBottom_toTopOf="@+id/showMealButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/mealText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="90dp"
+        android:text="Grammage"
+        app:layout_constraintBottom_toTopOf="@+id/addMealButton"
+        app:layout_constraintStart_toStartOf="@+id/addMealButton" />
+
+    <EditText
+        android:id="@+id/grammageEditText"
+        android:layout_width="82dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="8dp"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/mealText"
+        app:layout_constraintStart_toStartOf="@+id/mealText"
+        app:layout_constraintTop_toBottomOf="@+id/mealText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
