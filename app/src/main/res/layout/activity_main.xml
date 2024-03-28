@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="#bac7be"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="activities.MainActivity">
@@ -39,13 +40,14 @@
         android:id="@+id/grammatureLabel"
         android:layout_width="150dp"
         android:layout_height="36dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="136dp"
         android:text="Grammature"
         android:textAlignment="center"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mealEditText" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/grammatureEditText"
@@ -55,19 +57,24 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grammatureLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/grammatureLabel"
+        app:layout_constraintVertical_bias="0.01" />
 
     <Button
         android:id="@+id/addButton"
         android:layout_width="285dp"
         android:layout_height="58dp"
         android:layout_marginTop="12dp"
+        android:backgroundTint="#22FBFBFB"
         android:text="Add Ingredient"
+        app:layout_constraintBottom_toTopOf="@+id/calcButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grammatureEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/grammatureEditText"
+        app:layout_constraintVertical_bias="0.042" />
 
     <Button
         android:id="@+id/calcButton"
@@ -75,6 +82,7 @@
         android:layout_height="58dp"
         android:layout_marginTop="408dp"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="#45FFFFFF"
         android:text="Calculate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,14 +91,25 @@
 
     <ListView
         android:id="@+id/ingredientList"
-        android:layout_width="406dp"
-        android:layout_height="335dp"
+        android:layout_width="342dp"
+        android:layout_height="306dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toTopOf="@+id/calcButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addButton"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="KreonCulator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.951"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
