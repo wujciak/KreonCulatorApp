@@ -48,7 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/mealEditText" />
 
     <EditText
-        android:id="@+id/grammatureEditText"
+        android:id="@+id/quantityEditText"
         android:layout_width="159dp"
         android:layout_height="47dp"
         android:layout_marginStart="8dp"
@@ -67,7 +67,7 @@
         android:text="Add Ingredient"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grammatureEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/quantityEditText" />
 
     <Button
         android:id="@+id/calcButton"
@@ -79,7 +79,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grammatureEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/quantityEditText" />
 
     <ListView
         android:id="@+id/ingredientList"
