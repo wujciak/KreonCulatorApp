@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context="activities.UserSelect">
 
     <Button
@@ -16,6 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
+        android:backgroundTint="@color/tea_green"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
