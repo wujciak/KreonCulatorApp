@@ -4,48 +4,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="#bac7be"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#bac7be"
     tools:context="activities.MainActivity">
 
     <TextView
         android:id="@+id/mealLabel"
-        android:layout_width="92dp"
-        android:layout_height="34dp"
+        android:layout_width="75dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:text="Meal"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.541"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/mealEditText"
-        android:layout_width="266dp"
-        android:layout_height="50dp"
+        android:layout_width="235dp"
+        android:layout_height="47dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:inputType="text"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/grammatureLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mealLabel" />
+        app:layout_constraintTop_toTopOf="@+id/mealLabel"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/grammatureLabel"
-        android:layout_width="150dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="136dp"
+        android:layout_width="137dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="132dp"
         android:text="Grammature"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,62 +55,51 @@
         android:layout_width="159dp"
         android:layout_height="47dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
+        android:backgroundTint="#FF000000"
+        android:fontFamily="sans-serif"
         android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grammatureLabel"
-        app:layout_constraintVertical_bias="0.01" />
+        app:layout_constraintTop_toTopOf="@+id/grammatureLabel" />
 
     <Button
         android:id="@+id/addButton"
         android:layout_width="285dp"
         android:layout_height="58dp"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="#22FBFBFB"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#C2E1C2"
         android:text="Add Ingredient"
         app:layout_constraintBottom_toTopOf="@+id/calcButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/grammatureEditText"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="0.075" />
 
     <Button
         android:id="@+id/calcButton"
         android:layout_width="181dp"
         android:layout_height="58dp"
-        android:layout_marginTop="408dp"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="#45FFFFFF"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#C2E1C2"
         android:text="Calculate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grammatureEditText" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
         android:id="@+id/ingredientList"
         android:layout_width="342dp"
-        android:layout_height="306dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/calcButton"
+        android:layout_height="281dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addButton"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="KreonCulator"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.951"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/addButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
