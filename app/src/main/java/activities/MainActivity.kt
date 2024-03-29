@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         mealEditText = findViewById(R.id.mealEditText)
-        grammatureEditText = findViewById(R.id.grammatureEditText)
+        grammatureEditText = findViewById(R.id.quantityEditText)
         addButton = findViewById(R.id.addButton)
         calcButton = findViewById(R.id.calcButton)
         ingredientList = findViewById(R.id.ingredientList)

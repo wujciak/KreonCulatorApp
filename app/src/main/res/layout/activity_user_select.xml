@@ -11,16 +11,35 @@
         android:id="@+id/newUserButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="304dp"
         android:text="Create new user"
-        tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="396dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
         android:id="@+id/selectUserSpinner"
         android:layout_width="275dp"
-        android:layout_height="54dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="404dp"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="209dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/userSelectText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select User"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.044" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
