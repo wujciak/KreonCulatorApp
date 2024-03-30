@@ -1,6 +1,10 @@
 package activities
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,6 +20,25 @@ class CreateUser : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        val buttonClick = findViewById<Button>(R.id.addUserButton)
+        buttonClick.setOnClickListener {
+            val userNameEditText = findViewById<EditText>(R.id.newUserEditText)
+            val unitsQuantityEditText = findViewById<EditText>(R.id.setQuantityEditText)
+
+            val userName = userNameEditText.text.toString()
+            val unitsQuantity = unitsQuantityEditText.text.toString()
+
+            if (userName.isNotEmpty() && unitsQuantity.isNotEmpty()) {
+                val intent = Intent(this, UserSelect::class.java).apply {
+                    putExtra("userName", userName)
+                    putExtra("unitsQuantity", unitsQuantity)
+                }
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Please fill all fields!", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

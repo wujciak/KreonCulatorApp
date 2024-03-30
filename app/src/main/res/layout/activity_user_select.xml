@@ -12,12 +12,12 @@
         android:id="@+id/newUserButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="304dp"
+        android:layout_marginBottom="280dp"
+        android:backgroundTint="@color/tea_green"
         android:text="Create new user"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        android:backgroundTint="@color/tea_green"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
@@ -33,15 +33,27 @@
 
     <TextView
         android:id="@+id/userSelectText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="111dp"
+        android:layout_height="36dp"
         android:text="Select User"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintHorizontal_bias="0.946"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044" />
+        app:layout_constraintVertical_bias="0.037" />
+
+    <Button
+        android:id="@+id/goToMealButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="172dp"
+        android:backgroundTint="@color/tea_green"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

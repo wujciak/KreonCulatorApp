@@ -19,7 +19,7 @@ class UserSelect : AppCompatActivity() {
 
         // Tworzenie i konfiguracja Spinnera
         val dropdown: Spinner = findViewById(R.id.selectUserSpinner)
-        val items = arrayOf("Grzegorz", "Janek", "Martyna")
+        val items = arrayOf("Pierwszy ziutek")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
         dropdown.adapter = adapter
 
@@ -30,9 +30,27 @@ class UserSelect : AppCompatActivity() {
             insets
         }
 
+        // Pobierz dane nowego użytkownika z obiektu Intent
+        val newUserName = intent.getStringExtra("userName")
+        val newUnitsQuantity = intent.getStringExtra("unitsQuantity")
+
+        // Jeśli istnieją dane nowego użytkownika, dodaj go do listy Spinnera
+        if (newUserName != null && newUnitsQuantity != null) {
+            val newUser = "$newUserName - $newUnitsQuantity g"
+            (dropdown.adapter as ArrayAdapter<String>).add(newUser)
+        }
+
+        // Nasłuchuje przycisk i przechodzi do CreateUser gdy kliknięty przycisk
         val buttonClick = findViewById<Button>(R.id.newUserButton)
         buttonClick.setOnClickListener {
             val intent = Intent(this, CreateUser::class.java)
+            startActivity(intent)
+        }
+
+        // Nasłuchuje przycisk i przechodzi do MainActivity gdy kliknięty przycisk
+        val buttonNextClick = findViewById<Button>(R.id.goToMealButton)
+        buttonNextClick.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
