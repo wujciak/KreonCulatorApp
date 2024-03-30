@@ -10,7 +10,13 @@
         <item name="colorSecondaryVariant">@color/black</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">#0f7DCD85</item>
         <!-- Customize your theme here. -->
+    </style>
+    <style name="Theme.KreonCulatorApp.BackgroundImageStyle">
+        <item name="android:windowBackground">@drawable/tlo</item>
+<!--        <item name="android:statusBarColor">@color/emerald</item>-->
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="windowActionBarOverlay">true</item>
     </style>
 </resources>

@@ -5,7 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
     tools:context="activities.UserSelect">
 
     <Button
@@ -13,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="328dp"
-        android:backgroundTint="@color/tea_green"
+        android:backgroundTint="@color/cambridge_blue"
         android:text="Create new user"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="140dp"
-        android:backgroundTint="@color/tea_green"
+        android:backgroundTint="@color/cambridge_blue"
         android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

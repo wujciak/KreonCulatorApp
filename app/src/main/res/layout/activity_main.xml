@@ -6,27 +6,12 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
     tools:context="activities.MainActivity">
-
-    <TextView
-        android:id="@+id/mealLabel"
-        android:layout_width="75dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:text="Meal"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/mealEditText"
-        android:layout_width="225dp"
-        android:layout_height="46dp"
+        android:layout_width="210dp"
+        android:layout_height="43dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
@@ -39,12 +24,13 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/grammatureLabel"
-        android:layout_width="137dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="132dp"
-        android:inputType="numberDecimal"
-        android:text="Grammature [g]"
+        android:id="@+id/mealLabel"
+        android:layout_width="75dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="24dp"
+        android:text="Meal"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +42,7 @@
         android:layout_width="159dp"
         android:layout_height="47dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:backgroundTint="#FF000000"
         android:fontFamily="sans-serif"
@@ -68,19 +54,45 @@
         app:layout_constraintTop_toTopOf="@+id/grammatureLabel" />
 
     <Button
+        android:id="@+id/newMealButton"
+        android:layout_width="71dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/cambridge_blue"
+        android:text="New"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/mealEditText"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/grammatureLabel"
+        android:layout_width="137dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="160dp"
+        android:inputType="numberDecimal"
+        android:text="Grammature [g]"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/addButton"
         android:layout_width="285dp"
         android:layout_height="58dp"
         android:layout_marginTop="32dp"
-        android:backgroundTint="@color/tea_green"
+        android:backgroundTint="@color/cambridge_blue"
         android:text="Add Ingredient"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/calcButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/grammatureEditText"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.005" />
 
     <Button
         android:id="@+id/calcButton"
@@ -88,39 +100,24 @@
         android:layout_height="58dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/tea_green"
+        android:backgroundTint="@color/cambridge_blue"
         android:text="Calculate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.941" />
+        app:layout_constraintVertical_bias="0.916" />
 
     <ListView
         android:id="@+id/ingredientList"
-        android:layout_width="337dp"
-        android:layout_height="318dp"
+        android:layout_width="330dp"
+        android:layout_height="294dp"
         android:layout_marginTop="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addButton"
         app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/newMealButton"
-        android:layout_width="71dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/tea_green"
-        android:text="New"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/mealEditText"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
