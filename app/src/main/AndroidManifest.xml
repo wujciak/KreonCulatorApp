@@ -13,6 +13,9 @@
         android:theme="@style/Theme.KreonCulatorApp"
         tools:targetApi="31">
         <activity
+            android:name="activities.CreateNewMeal"
+            android:exported="false" />
+        <activity
             android:name="activities.UserSelect"
             android:exported="true">
             <intent-filter>
@@ -22,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name="activities.CreateUser" />
-        <activity android:name="activities.MainActivity"/>
+        <activity android:name="activities.MainActivity" />
     </application>
 
 </manifest>

@@ -103,4 +103,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addButton" />
 
+    <Button
+        android:id="@+id/newMealButton"
+        android:layout_width="71dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+        android:text="New"
+        android:onClick="onNewMealButtonClick"
+        android:backgroundTint="@color/tea_green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toEndOf="@+id/mealEditText"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
