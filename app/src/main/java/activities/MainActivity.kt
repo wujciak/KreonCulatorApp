@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var calcButton: Button
     private lateinit var ingredientList: ListView
     private lateinit var ingredients: MutableList<String>
+    private lateinit var newMealButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         calcButton = findViewById(R.id.calcButton)
         ingredientList = findViewById(R.id.ingredientList)
         ingredients = ArrayList()
+        newMealButton = findViewById(R.id.newMealButton)
     }
 
     private fun setupListeners() {
@@ -54,15 +56,15 @@ class MainActivity : AppCompatActivity() {
             // Tu będzie obliczana dawka leku
             // zrobimy to w dalszej części projektu
         }
+
+        newMealButton.setOnClickListener {
+            val intent = Intent(this, CreateNewMeal::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun refreshIngredientList() {
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, ingredients)
         ingredientList.adapter = adapter
-    }
-
-    fun onNewMealButtonClick() {
-        val intent = Intent(this, CreateNewMeal::class.java)
-        startActivity(intent)
     }
 }
