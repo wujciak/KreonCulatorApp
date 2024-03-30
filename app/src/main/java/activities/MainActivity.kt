@@ -2,8 +2,11 @@ package activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kreonculatorapp.R
 
@@ -19,6 +22,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initializeViews()
+        setupListeners()
+    }
+
+    private fun initializeViews() {
         supportActionBar?.title = "KreonCulator"
         mealEditText = findViewById(R.id.mealEditText)
         grammatureEditText = findViewById(R.id.grammatureEditText)
@@ -26,7 +34,9 @@ class MainActivity : AppCompatActivity() {
         calcButton = findViewById(R.id.calcButton)
         ingredientList = findViewById(R.id.ingredientList)
         ingredients = ArrayList()
+    }
 
+    private fun setupListeners() {
         addButton.setOnClickListener {
             val meal = mealEditText.text.toString()
             val grammature = grammatureEditText.text.toString()
@@ -41,17 +51,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         calcButton.setOnClickListener {
-            // calculate the required dose of Kreon
+            // Tu będzie obliczana dawka leku
+            // zrobimy to w dalszej części projektu
         }
-    }
-
-    fun onNewMealButtonClick(view: View) {
-        val intent = Intent(this, CreateNewMeal::class.java)
-        startActivity(intent)
     }
 
     private fun refreshIngredientList() {
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, ingredients)
         ingredientList.adapter = adapter
+    }
+
+    fun onNewMealButtonClick() {
+        val intent = Intent(this, CreateNewMeal::class.java)
+        startActivity(intent)
     }
 }

@@ -32,6 +32,7 @@ class CreateUser : AppCompatActivity() {
             val userName = userNameEditText.text.toString()
             val unitsQuantity = unitsQuantityEditText.text.toString()
 
+            // nie działa
             if (userName.isNotEmpty() && unitsQuantity.isNotEmpty()) {
                 val intent = Intent(this, UserSelect::class.java).apply {
                     putExtra("userName", userName)

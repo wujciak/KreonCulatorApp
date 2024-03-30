@@ -2,8 +2,6 @@ package activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
@@ -14,16 +12,22 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.kreonculatorapp.R
 
 class UserSelect : AppCompatActivity() {
+
     private lateinit var dropdown: Spinner
     private lateinit var adapter: ArrayAdapter<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_user_select)
+        enableEdgeToEdge()
+        initializeViews()
+        setupListeners()
+    }
+
+    private fun initializeViews() {
         supportActionBar?.title = "Select User"
         dropdown = findViewById(R.id.selectUserSpinner)
-        val items = arrayOf("Pierwszy ziutek")
+        val items = arrayOf("Próbny użytkownik")
         adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
         dropdown.adapter = adapter
 
@@ -32,18 +36,9 @@ class UserSelect : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
 
-        val newUserName = intent.getStringExtra("userName")
-        val newUnitsQuantity = intent.getStringExtra("unitsQuantity")
-
-        if (newUserName != null && newUnitsQuantity != null) {
-            val newUser = "$newUserName - $newUnitsQuantity g"
-            Handler(Looper.getMainLooper()).post {
-                adapter.add(newUser)
-                adapter.notifyDataSetChanged()
-            }
-        }
-
+    private fun setupListeners() {
         val buttonClick = findViewById<Button>(R.id.newUserButton)
         buttonClick.setOnClickListener {
             val intent = Intent(this, CreateUser::class.java)
