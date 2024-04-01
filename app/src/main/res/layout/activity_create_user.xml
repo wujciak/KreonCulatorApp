@@ -10,22 +10,25 @@
     <EditText
         android:id="@+id/newUserEditText"
         android:layout_width="159dp"
-        android:layout_height="47dp"
+        android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:inputType="text"
         android:visibility="visible"
+        android:autofillHints="username"
+        android:contentDescription="@string/enter_your_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newUserText" />
+        app:layout_constraintTop_toBottomOf="@+id/newUserText"
+        tools:ignore="LabelFor" />
 
     <TextView
         android:id="@+id/newUserText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="148dp"
-        android:text="New Name"
+        android:text="@string/new_name"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -37,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/cambridge_blue"
-        android:text="Add User"
+        android:text="@string/add_user"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -50,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="264dp"
-        android:text="Units Quantity "
+        android:text="@string/units_quantity"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/setQuantityEditText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,14 +65,18 @@
     <EditText
         android:id="@+id/setQuantityEditText"
         android:layout_width="159dp"
-        android:layout_height="47dp"
+        android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:inputType="numberDecimal"
+        android:autofillHints="quantity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.426" />
+        app:layout_constraintVertical_bias="0.426"
+        tools:ignore="LabelFor" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">KreonCulatorApp</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="add_user">Add user</string>
+    <string name="new_name">New name</string>
+    <string name="units_quantity">Units quantity</string>
+    <string name="create_new_user">Create new user</string>
+    <string name="next">Next</string>
+    <string name="meal">Meal</string>
+    <string name="add_new">Add new</string>
+    <string name="grammature_g">Grammature [g]</string>
+    <string name="add_ingredient">Add ingredient</string>
+    <string name="calculate">Calculate</string>
+    <string name="add_meal">Add meal</string>
+    <string name="ingredient_name">Ingredient name</string>
+    <string name="fat_per_100g">Fat per 100g</string>
 </resources>

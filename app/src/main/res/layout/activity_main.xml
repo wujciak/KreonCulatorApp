@@ -11,88 +11,86 @@
     <EditText
         android:id="@+id/mealEditText"
         android:layout_width="210dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="52dp"
+        android:autofillHints="Meal name"
         android:inputType="text"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/grammatureLabel"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mealLabel"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.681"
+        tools:ignore="LabelFor" />
 
     <TextView
         android:id="@+id/mealLabel"
         android:layout_width="75dp"
         android:layout_height="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="24dp"
-        android:text="Meal"
+        android:text="@string/meal"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/mealEditText"
+        app:layout_constraintEnd_toEndOf="@+id/mealEditText"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/mealEditText" />
 
     <EditText
         android:id="@+id/grammatureEditText"
         android:layout_width="159dp"
-        android:layout_height="47dp"
+        android:layout_height="48dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
+        android:autofillHints="grammature"
         android:backgroundTint="#FF000000"
         android:fontFamily="sans-serif"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/addButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/grammatureLabel" />
-
-    <Button
-        android:id="@+id/newMealButton"
-        android:layout_width="71dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/cambridge_blue"
-        android:text="New"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/mealEditText"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.859"
+        tools:ignore="LabelFor" />
 
     <TextView
         android:id="@+id/grammatureLabel"
         android:layout_width="137dp"
         android:layout_height="27dp"
-        android:layout_marginTop="160dp"
-        android:inputType="numberDecimal"
-        android:text="Grammature [g]"
+        android:text="@string/grammature_g"
         android:textAlignment="center"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/grammatureEditText"
+        app:layout_constraintEnd_toEndOf="@+id/grammatureEditText"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="@+id/grammatureEditText" />
+
+    <Button
+        android:id="@+id/newMealButton"
+        android:layout_width="73dp"
+        android:layout_height="53dp"
+        android:backgroundTint="@color/cambridge_blue"
+        android:text="@string/add_new"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.952"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.11" />
 
     <Button
         android:id="@+id/addButton"
-        android:layout_width="285dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="190dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="288dp"
         android:backgroundTint="@color/cambridge_blue"
-        android:text="Add Ingredient"
+        android:text="@string/add_ingredient"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/calcButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grammatureEditText"
-        app:layout_constraintVertical_bias="0.005" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/calcButton"
@@ -101,7 +99,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/cambridge_blue"
-        android:text="Calculate"
+        android:text="@string/calculate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -110,12 +108,11 @@
 
     <ListView
         android:id="@+id/ingredientList"
-        android:layout_width="330dp"
-        android:layout_height="294dp"
+        android:layout_width="327dp"
+        android:layout_height="236dp"
         android:layout_marginTop="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addButton"
         app:layout_constraintVertical_bias="0.0" />

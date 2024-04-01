@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kreonculatorapp.R
 
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        enableEdgeToEdge()
         initializeViews()
         setupListeners()
     }
@@ -42,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         addButton.setOnClickListener {
             val meal = mealEditText.text.toString()
             val grammature = grammatureEditText.text.toString()
-
             if (meal.isNotEmpty() && grammature.isNotEmpty()) {
                 val ingredient = "$meal - $grammature g"
                 ingredients.add(ingredient)
@@ -54,7 +55,6 @@ class MainActivity : AppCompatActivity() {
 
         calcButton.setOnClickListener {
             // Tu będzie obliczana dawka leku
-            // zrobimy to w dalszej części projektu
         }
 
         newMealButton.setOnClickListener {

@@ -7,32 +7,33 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.kreonculatorapp.R
 
 class CreateUser : AppCompatActivity() {
+
+    private lateinit var setQuantityEditText: EditText
+    private lateinit var addUserButton: Button
+    private lateinit var newUserEditText: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_create_user)
+        enableEdgeToEdge()
+        initializeViews()
+        setupListeners()
+    }
+
+    private fun initializeViews() {
         supportActionBar?.title = "Create User"
+        setQuantityEditText = findViewById(R.id.setQuantityEditText)
+        newUserEditText = findViewById(R.id.newUserEditText)
+        addUserButton = findViewById(R.id.addUserButton)
+    }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-
-        val buttonClick = findViewById<Button>(R.id.addUserButton)
-        buttonClick.setOnClickListener {
-            val userNameEditText = findViewById<EditText>(R.id.newUserEditText)
-            val unitsQuantityEditText = findViewById<EditText>(R.id.setQuantityEditText)
-
-            val userName = userNameEditText.text.toString()
-            val unitsQuantity = unitsQuantityEditText.text.toString()
-
-            // nie działa
+    private fun setupListeners() {
+        addUserButton.setOnClickListener {
+            val userName = newUserEditText.text.toString()
+            val unitsQuantity = setQuantityEditText.text.toString()
             if (userName.isNotEmpty() && unitsQuantity.isNotEmpty()) {
                 val intent = Intent(this, UserSelect::class.java).apply {
                     putExtra("userName", userName)
