@@ -11,7 +11,7 @@ import com.example.kreonculatorapp.R
 
 class UserSelect : AppCompatActivity() {
 
-    private lateinit var newuserButton: Button
+    private lateinit var newUserButton: Button
     private lateinit var goToMealButton: Button
     private lateinit var selectUserSpinner: Spinner
     private lateinit var adapter: ArrayAdapter<String>
@@ -26,7 +26,7 @@ class UserSelect : AppCompatActivity() {
 
     private fun initializeViews() {
         supportActionBar?.title = "Select User"
-        newuserButton = findViewById(R.id.newUserButton)
+        newUserButton = findViewById(R.id.newUserButton)
         goToMealButton = findViewById(R.id.goToMealButton)
         selectUserSpinner = findViewById(R.id.selectUserSpinner)
         val items = arrayOf("None")
@@ -35,7 +35,7 @@ class UserSelect : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-        newuserButton.setOnClickListener {
+        newUserButton.setOnClickListener {
             val intent = Intent(this, CreateUser::class.java)
             startActivity(intent)
         }
