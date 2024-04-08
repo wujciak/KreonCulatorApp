@@ -14,4 +14,9 @@
     <string name="add_meal">Add meal</string>
     <string name="ingredient_name">Ingredient name</string>
     <string name="fat_per_100g">Fat per 100g</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="sign_up">Sign Up</string>
 </resources>
