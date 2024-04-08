@@ -1,4 +1,4 @@
-package activities
+package com.example.kreonculatorapp.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,6 +12,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.kreonculatorapp.R
 
 class MainActivity : AppCompatActivity() {
+    // musimy zrobić logowanie, zamiast dodawanie użytkownika
+    // musimy zrobic jakis raport zwrotny dla lekarza
+    // input texty, text view
+    // register
+    // z każdego elementu możemy zrobić coś klikalne
 
     private lateinit var mealEditText: EditText
     private lateinit var grammatureEditText: EditText
