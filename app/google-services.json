@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "559211620719",
+    "project_id": "kreon-culator-app",
+    "storage_bucket": "kreon-culator-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559211620719:android:26a199f0e1e56fb887209a",
+        "android_client_info": {
+          "package_name": "com.example.kreonculatorapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6vpfrA2yHkT_YS0RHKFGc8SmTb-6OKGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
