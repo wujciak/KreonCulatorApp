@@ -37,7 +37,6 @@ class Register : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-
         registerButton.setOnClickListener {
             val name = inputName.text.toString()
             val email = inputEmail.text.toString()
