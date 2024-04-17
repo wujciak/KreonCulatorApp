@@ -13,31 +13,33 @@
         android:layout_height="50dp"
         android:layout_marginBottom="76dp"
         android:ems="10"
-        android:hint="Email"
+        android:hint="@string/Email"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/loginButtonSignIn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/inputPasswordSignIn"
         android:layout_width="305dp"
         android:layout_height="50dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/Password"
         android:inputType="textPersonName|textPassword"
         app:layout_constraintBottom_toTopOf="@+id/loginButtonSignIn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputEmailSignIn"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="Autofill" />
 
     <Button
         android:id="@+id/loginButtonSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="280dp"
-        android:text="Login"
+        android:text="@string/Login"
         app:backgroundTint="@color/cambridge_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +52,7 @@
         android:layout_height="36dp"
         android:layout_marginBottom="208dp"
         android:onClick="LoginClick"
-        android:text="Register"
+        android:text="@string/Register"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -64,7 +66,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="204dp"
-        android:text="Don't have an account?"
+        android:text="@string/don_t_have_an_account"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/registerTextViewClickableSignIn"
@@ -80,6 +82,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/user_picture" />
+        app:srcCompat="@drawable/user_picture"
+        tools:ignore="ContentDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

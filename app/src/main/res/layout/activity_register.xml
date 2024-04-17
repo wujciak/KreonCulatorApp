@@ -15,7 +15,7 @@
         android:layout_marginBottom="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Name"
+        android:hint="@string/Name"
         app:layout_constraintBottom_toTopOf="@+id/inputEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +29,7 @@
         android:layout_marginBottom="19dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Email"
+        android:hint="@+id/Email"
         app:layout_constraintBottom_toTopOf="@+id/inputPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -75,7 +75,7 @@
         android:layout_width="236dp"
         android:layout_height="26dp"
         android:layout_marginBottom="100dp"
-        android:text="Already have an account?"
+        android:text="@string/already_have_an_account"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -89,7 +89,7 @@
         android:layout_height="27dp"
         android:layout_marginBottom="100dp"
         android:onClick="goToLogin"
-        android:text="Log In"
+        android:text="@string/log_in"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -107,6 +107,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?android:attr/fingerprintAuthDrawable" />
+        app:srcCompat="?android:attr/fingerprintAuthDrawable"
+        tools:ignore="ContentDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
