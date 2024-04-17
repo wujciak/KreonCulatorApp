@@ -29,7 +29,7 @@
         android:layout_marginBottom="19dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="@+id/Email"
+        android:hint="@string/Email"
         app:layout_constraintBottom_toTopOf="@+id/inputPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
