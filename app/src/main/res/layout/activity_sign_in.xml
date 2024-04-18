@@ -51,7 +51,7 @@
         android:layout_width="80dp"
         android:layout_height="36dp"
         android:layout_marginBottom="208dp"
-        android:onClick="LoginClick"
+        android:onClick="registerClick"
         android:text="@string/Register"
         android:textSize="20sp"
         android:textStyle="bold"

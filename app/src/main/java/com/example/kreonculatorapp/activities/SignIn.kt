@@ -2,12 +2,15 @@ package com.example.kreonculatorapp.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kreonculatorapp.R
+import com.google.firebase.auth.FirebaseAuth
 
 class SignIn : AppCompatActivity() {
     private lateinit var inputEmailSignIn: EditText
@@ -20,7 +23,12 @@ class SignIn : AppCompatActivity() {
         setContentView(R.layout.activity_sign_in)
         enableEdgeToEdge()
         initializeViews()
-        setupListeners()
+        loginButtonSignIn.setOnClickListener{
+            logInRegisterUser()
+        }
+        registerTextViewClickableSignIn.setOnClickListener {
+            registerClick(registerTextViewClickableSignIn)
+        }
     }
 
     private fun initializeViews() {
@@ -31,15 +39,58 @@ class SignIn : AppCompatActivity() {
         registerTextViewClickableSignIn = findViewById(R.id.registerTextViewClickableSignIn)
     }
 
-    private fun setupListeners() {
-        loginButtonSignIn.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+    fun registerClick(view: TextView) {
+        when (view.id) {
+            // Jeśli kliknięto registerTextViewClickable (przycisk przejścia do rejestracji), uruchom aktywność rejestracji
+            // aby TextView mogł być klikalny,nalezy ustawić właściwą funkcję w pliku xml.
+            R.id.registerTextViewClickableSignIn -> {
+                val intent = Intent(this, Register::class.java)
+                startActivity(intent)
+            }
         }
+    }
 
-        registerTextViewClickableSignIn.setOnClickListener {
-            val intent = Intent(this, Register::class.java)
-            startActivity(intent)
+    private fun validateLoginDetails(): Boolean {
+        return when {
+            TextUtils.isEmpty(inputEmailSignIn.text.toString().trim { it <= ' ' }) -> {
+                Toast.makeText(this, "Please fill your email field!", Toast.LENGTH_SHORT).show()
+                false
+            }
+            TextUtils.isEmpty(inputPasswordSignIn.text.toString().trim { it <= ' ' }) -> {
+                Toast.makeText(this, "Please fill your password field!", Toast.LENGTH_SHORT).show()
+                false
+            }
+            else -> true
         }
+    }
+
+    private fun logInRegisterUser() {
+        if (validateLoginDetails()) {
+            val email = inputEmailSignIn.text.toString().trim { it <= ' ' }
+            val password = inputPasswordSignIn.text.toString().trim { it <= ' ' }
+
+            // Logowanie za pomocą FirebaseAuth
+            FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "You you have been logged in successfully.", Toast.LENGTH_LONG).show()
+
+                        goToMainActivity()
+                        finish()
+                    } else {
+                        Toast.makeText(this, "Login failed!", Toast.LENGTH_LONG).show()
+                    }
+                }
+        }
+    }
+
+    private fun goToMainActivity() {
+        val user = FirebaseAuth.getInstance().currentUser
+        val uid = user?.email.toString()
+
+        //Przekazanie wartości uid
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("uID", uid)
+        startActivity(intent)
     }
 }

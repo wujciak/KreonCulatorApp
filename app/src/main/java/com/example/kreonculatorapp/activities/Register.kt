@@ -3,7 +3,6 @@ package com.example.kreonculatorapp.activities
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -31,6 +30,9 @@ class Register : AppCompatActivity() {
         initializeViews()
         registerButton.setOnClickListener{
             registerUser()
+        }
+        logInText.setOnClickListener {
+            goToLogin()
         }
     }
 
@@ -86,7 +88,8 @@ class Register : AppCompatActivity() {
                     OnCompleteListener<AuthResult> { task ->
                         if (task.isSuccessful) {
                             val firebaseUser: FirebaseUser = task.result!!.user!!
-                            Toast.makeText(this, "You are registered successfully." + " Your user id is ${firebaseUser.uid}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "You are registered successfully."
+                                    + " Your user id is ${firebaseUser.uid}", Toast.LENGTH_SHORT).show()
                             FirebaseAuth.getInstance().signOut()
                             // Po zakończeniu rejestracji, przejdź do SignIn Activity
                             val intent = Intent(this, SignIn::class.java)
