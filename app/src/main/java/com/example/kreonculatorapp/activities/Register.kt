@@ -11,6 +11,8 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kreonculatorapp.R
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -68,7 +70,7 @@ class Register : AppCompatActivity() {
         }
     }
 
-    fun goToLogin(view: View) {
+    fun goToLogin() {
         val intent = Intent(this, SignIn::class.java)
         startActivity(intent)
         finish()
@@ -80,15 +82,19 @@ class Register : AppCompatActivity() {
             val password: String = inputPassword.text.toString().trim {it <= ' '}
 
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(login, password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val firebaseUser: FirebaseUser = task.result!!.user!!
-                        Toast.makeText(this, "You are registered successfully." +
-                                    " Your user id is ${firebaseUser.uid}", Toast.LENGTH_SHORT).show()
-                        FirebaseAuth.getInstance().signOut()
-                        finish()
+                .addOnCompleteListener(
+                    OnCompleteListener<AuthResult> { task ->
+                        if (task.isSuccessful) {
+                            val firebaseUser: FirebaseUser = task.result!!.user!!
+                            Toast.makeText(this, "You are registered successfully." + " Your user id is ${firebaseUser.uid}", Toast.LENGTH_SHORT).show()
+                            FirebaseAuth.getInstance().signOut()
+                            // Po zakończeniu rejestracji, przejdź do SignIn Activity
+                            val intent = Intent(this, SignIn::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
                     }
-                }
+                )
         }
     }
 }
