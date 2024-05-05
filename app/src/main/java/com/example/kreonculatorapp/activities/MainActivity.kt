@@ -10,21 +10,18 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kreonculatorapp.R
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
-    // musimy zrobić logowanie, zamiast dodawanie użytkownika
-    // musimy zrobic jakis raport zwrotny dla lekarza
-    // input texty, text view
-    // register
-    // z każdego elementu możemy zrobić coś klikalne
-
     private lateinit var mealEditText: EditText
     private lateinit var grammatureEditText: EditText
     private lateinit var addButton: Button
     private lateinit var calcButton: Button
     private lateinit var ingredientList: ListView
-    private lateinit var ingredients: MutableList<String>
     private lateinit var newMealButton: Button
+    private lateinit var db: FirebaseFirestore
+    private lateinit var adapter: ArrayAdapter<String>
+    private var ingredients: MutableList<String> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         initializeViews()
         setupListeners()
+        db = FirebaseFirestore.getInstance()
+        retrieveProductsFromFirestore()
     }
 
     private fun initializeViews() {
@@ -43,6 +42,9 @@ class MainActivity : AppCompatActivity() {
         ingredientList = findViewById(R.id.ingredientList)
         ingredients = ArrayList()
         newMealButton = findViewById(R.id.newMealButton)
+
+        adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, ingredients)
+        ingredientList.adapter = adapter
     }
 
     private fun setupListeners() {
@@ -68,8 +70,23 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun refreshIngredientList() {
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, ingredients)
-        ingredientList.adapter = adapter
+    private fun retrieveProductsFromFirestore() {
+        db.collection("products")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    val productName = document.getString("name")
+                    val fat = document.getDouble("fat")
+                    if (productName != null && fat != null) {
+                        ingredients.add("$productName - $fat g")
+                    }
+                }
+                refreshIngredientList()
+            }
     }
+
+    private fun refreshIngredientList() {
+        adapter.notifyDataSetChanged()
+    }
+
 }
