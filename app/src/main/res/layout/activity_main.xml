@@ -9,10 +9,10 @@
     tools:context=".activities.MainActivity">
 
     <EditText
-        android:id="@+id/mealEditText"
+        android:id="@+id/productEditText"
         android:layout_width="210dp"
         android:layout_height="52dp"
-        android:autofillHints="Meal name"
+        android:autofillHints="Product name"
         android:inputType="text"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/grammatureLabel"
@@ -27,13 +27,13 @@
         android:id="@+id/mealLabel"
         android:layout_width="75dp"
         android:layout_height="24dp"
-        android:text="@string/meal"
+        android:text="@string/product"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/mealEditText"
-        app:layout_constraintEnd_toEndOf="@+id/mealEditText"
+        app:layout_constraintBottom_toTopOf="@+id/productEditText"
+        app:layout_constraintEnd_toEndOf="@+id/productEditText"
         app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="@+id/mealEditText" />
+        app:layout_constraintStart_toStartOf="@+id/productEditText" />
 
     <EditText
         android:id="@+id/grammatureEditText"
@@ -107,7 +107,7 @@
         app:layout_constraintVertical_bias="0.916" />
 
     <ListView
-        android:id="@+id/ingredientList"
+        android:id="@+id/productsList"
         android:layout_width="327dp"
         android:layout_height="236dp"
         android:layout_marginTop="32dp"

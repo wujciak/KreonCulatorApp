@@ -10,18 +10,21 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kreonculatorapp.R
-import com.google.firebase.firestore.FirebaseFirestore
+import com.example.kreonculatorapp.firestore.DataOperations
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var mealEditText: EditText
+    private lateinit var productEditText: EditText
     private lateinit var grammatureEditText: EditText
     private lateinit var addButton: Button
-    private lateinit var calcButton: Button
-    private lateinit var ingredientList: ListView
-    private lateinit var newMealButton: Button
-    private lateinit var db: FirebaseFirestore
+    private lateinit var productsList: ListView
+    private lateinit var newProductButton: Button
     private lateinit var adapter: ArrayAdapter<String>
     private var ingredients: MutableList<String> = mutableListOf()
+
+    val db = Firebase.firestore
+    private val dbOperations = DataOperations(db)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,64 +32,45 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         initializeViews()
         setupListeners()
-        db = FirebaseFirestore.getInstance()
-        retrieveProductsFromFirestore()
     }
 
     private fun initializeViews() {
         supportActionBar?.title = "KreonCulator"
-        mealEditText = findViewById(R.id.mealEditText)
+        productEditText = findViewById(R.id.productEditText)
         grammatureEditText = findViewById(R.id.grammatureEditText)
         addButton = findViewById(R.id.addButton)
-        calcButton = findViewById(R.id.calcButton)
-        ingredientList = findViewById(R.id.ingredientList)
+        productsList = findViewById(R.id.productsList)
         ingredients = ArrayList()
-        newMealButton = findViewById(R.id.newMealButton)
+        newProductButton = findViewById(R.id.newMealButton)
 
         adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, ingredients)
-        ingredientList.adapter = adapter
+        productsList.adapter = adapter
     }
 
     private fun setupListeners() {
         addButton.setOnClickListener {
-            val meal = mealEditText.text.toString()
+            val product = productEditText.text.toString()
             val grammature = grammatureEditText.text.toString()
-            if (meal.isNotEmpty() && grammature.isNotEmpty()) {
-                val ingredient = "$meal - $grammature g"
-                ingredients.add(ingredient)
+            if (product.isNotEmpty() && grammature.isNotEmpty()) {
+                val product = "$product - $grammature g"
+                ingredients.add(product)
                 refreshIngredientList()
             } else {
                 Toast.makeText(this, "Please fill all fields!", Toast.LENGTH_SHORT).show()
             }
         }
 
-        calcButton.setOnClickListener {
-            // Tu będzie obliczana dawka leku
-        }
-
-        newMealButton.setOnClickListener {
-            val intent = Intent(this, CreateNewMeal::class.java)
+        newProductButton.setOnClickListener {
+            val intent = Intent(this, CreateNewProduct::class.java)
             startActivity(intent)
-        }
-    }
 
-    private fun retrieveProductsFromFirestore() {
-        db.collection("products")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    val productName = document.getString("name")
-                    val fat = document.getDouble("fat")
-                    if (productName != null && fat != null) {
-                        ingredients.add("$productName - $fat g")
-                    }
-                }
-                refreshIngredientList()
-            }
+            TODO()
+            TODO("należy dodać listener do pola product, który przenosi do searchView")
+
+        }
     }
 
     private fun refreshIngredientList() {
         adapter.notifyDataSetChanged()
     }
-
 }

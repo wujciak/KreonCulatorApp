@@ -41,8 +41,6 @@ class SignIn : AppCompatActivity() {
 
     fun registerClick(view: TextView) {
         when (view.id) {
-            // Jeśli kliknięto registerTextViewClickable (przycisk przejścia do rejestracji), uruchom aktywność rejestracji
-            // aby TextView mogł być klikalny,nalezy ustawić właściwą funkcję w pliku xml.
             R.id.registerTextViewClickableSignIn -> {
                 val intent = Intent(this, Register::class.java)
                 startActivity(intent)
