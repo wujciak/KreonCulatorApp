@@ -31,9 +31,6 @@ class Register : AppCompatActivity() {
         registerButton.setOnClickListener{
             registerUser()
         }
-        logInText.setOnClickListener {
-            goToLogin()
-        }
     }
 
     private fun initializeViews() {
@@ -88,8 +85,7 @@ class Register : AppCompatActivity() {
                     OnCompleteListener<AuthResult> { task ->
                         if (task.isSuccessful) {
                             val firebaseUser: FirebaseUser = task.result!!.user!!
-                            Toast.makeText(this, "You are registered successfully."
-                                    + " Your user id is ${firebaseUser.uid}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "You are registered successfully." + " Your user id is ${firebaseUser.uid}", Toast.LENGTH_SHORT).show()
                             FirebaseAuth.getInstance().signOut()
                             // Po zakończeniu rejestracji, przejdź do SignIn Activity
                             val intent = Intent(this, SignIn::class.java)

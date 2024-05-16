@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kreonculatorapp.R
+import com.example.kreonculatorapp.activities.recyclerview.ProductList
 import com.example.kreonculatorapp.firestore.DataOperations
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var newProductButton: Button
     private lateinit var adapter: ArrayAdapter<String>
     private var ingredients: MutableList<String> = mutableListOf()
+    private lateinit var fakeButton: Button
 
     val db = Firebase.firestore
     private val dbOperations = DataOperations(db)
@@ -42,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         productsList = findViewById(R.id.productsList)
         ingredients = ArrayList()
         newProductButton = findViewById(R.id.newMealButton)
+        fakeButton = findViewById(R.id.fakeButton)
 
         adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, ingredients)
         productsList.adapter = adapter
@@ -63,10 +66,11 @@ class MainActivity : AppCompatActivity() {
         newProductButton.setOnClickListener {
             val intent = Intent(this, CreateNewProduct::class.java)
             startActivity(intent)
+        }
 
-            TODO()
-            TODO("należy dodać listener do pola product, który przenosi do searchView")
-
+        fakeButton.setOnClickListener {
+            val intent = Intent(this, ProductList::class.java)
+            startActivity(intent)
         }
     }
 
