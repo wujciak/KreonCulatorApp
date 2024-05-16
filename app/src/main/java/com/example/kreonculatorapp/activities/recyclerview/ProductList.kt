@@ -1,3 +1,5 @@
+package com.example.kreonculatorapp.activities.recyclerview
+
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -15,7 +17,7 @@ class ProductList : ComponentActivity() {
     private lateinit var firestore: FirebaseFirestore
     private lateinit var products: MutableList<Product>
     private lateinit var adapter: ProductAdapter
-    private lateinit var searchEditText: EditText // Deklaracja pola searchEditText
+    private lateinit var searchEditText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,11 +69,11 @@ class ProductList : ComponentActivity() {
     private fun setupSearch() {
         searchEditText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                // No action needed
+
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // No action needed
+
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -91,6 +93,6 @@ class ProductList : ComponentActivity() {
     }
 
     companion object {
-        private const val TAG = "ProductList"
+        private const val TAG = "com.example.kreonculatorapp.activities.recyclerview.ProductList"
     }
 }

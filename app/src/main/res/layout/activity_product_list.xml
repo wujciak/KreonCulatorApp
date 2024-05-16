@@ -8,8 +8,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="415dp"
-        android:layout_height="514dp"
+        android:layout_width="385dp"
+        android:layout_height="473dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +38,12 @@
         app:layout_constraintStart_toEndOf="@+id/searchEditText"
         tools:layout_editor_absoluteY="45dp"
         tools:ignore="MissingConstraints" />
+
+    <SearchView
+        android:layout_width="409dp"
+        android:layout_height="42dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

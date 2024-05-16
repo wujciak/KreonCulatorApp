@@ -11,6 +11,7 @@ import com.example.kreonculatorapp.firestore.DataOperations
 import com.example.kreonculatorapp.firestore.Product
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -38,6 +39,7 @@ class CreateNewProduct : AppCompatActivity() {
         addProductButton = findViewById(R.id.addProductButton)
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     private fun setupListeners() {
         addProductButton.setOnClickListener {
             val name = newProductEditText.text.toString()

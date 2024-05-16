@@ -1,3 +1,5 @@
+package com.example.kreonculatorapp.activities.recyclerview
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -30,18 +32,9 @@ class ProductAdapter(private val originalProducts: MutableList<Product>) : Recyc
 
     override fun getItemCount() = filteredProducts.size
 
-    fun filter(text: String) {
+    fun filter(products: List<Product>) {
         filteredProducts.clear()
-        if (text.isEmpty()) {
-            filteredProducts.addAll(originalProducts)
-        } else {
-            val searchText = text.toLowerCase(Locale.getDefault())
-            for (product in originalProducts) {
-                if (product.name.toLowerCase(Locale.getDefault()).contains(searchText)) {
-                    filteredProducts.add(product)
-                }
-            }
-        }
+        filteredProducts.addAll(products)
         notifyDataSetChanged()
     }
 }

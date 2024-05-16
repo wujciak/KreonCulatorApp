@@ -7,19 +7,24 @@
 
     <TextView
         android:id="@+id/nameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="118dp"
+        android:layout_height="53dp"
+        android:padding="8dp"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:padding="8dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="192dp" />
 
     <TextView
         android:id="@+id/fatRecyclerviewTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:layout_width="54dp"
+        android:layout_height="59dp"
         android:paddingStart="8dp"
-        tools:ignore="MissingConstraints" />
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="186dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
