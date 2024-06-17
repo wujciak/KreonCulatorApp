@@ -1,23 +1,20 @@
 package com.example.kreonculatorapp.activities.recyclerview
 
 import android.view.LayoutInflater
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.example.kreonculatorapp.R
 import com.example.kreonculatorapp.firestore.Product
-import java.util.*
 
-class ProductAdapter(private val originalProducts: MutableList<Product>) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
-    private var filteredProducts = ArrayList<Product>()
+class ProductAdapter(
+    private val productList: List<Product>,
+    private val clickListener: OnProductClickListener
+) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
-    init {
-        filteredProducts.addAll(originalProducts)
-    }
-
-    class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nameTextView: TextView = itemView.findViewById(R.id.nameTextView)
+    interface OnProductClickListener {
+        fun onProductClick(product: Product)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
@@ -26,15 +23,16 @@ class ProductAdapter(private val originalProducts: MutableList<Product>) : Recyc
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        val currentProduct = filteredProducts[position]
-        holder.nameTextView.text = currentProduct.name
+        val product = productList[position]
+        holder.productName.text = product.name
+        holder.itemView.setOnClickListener {
+            clickListener.onProductClick(product)
+        }
     }
 
-    override fun getItemCount() = filteredProducts.size
+    override fun getItemCount() = productList.size
 
-    fun filter(products: List<Product>) {
-        filteredProducts.clear()
-        filteredProducts.addAll(products)
-        notifyDataSetChanged()
+    class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val productName: TextView = itemView.findViewById(R.id.productNameTextView)
     }
 }

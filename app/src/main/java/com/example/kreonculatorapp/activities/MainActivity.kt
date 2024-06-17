@@ -11,9 +11,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kreonculatorapp.R
 import com.example.kreonculatorapp.activities.recyclerview.ProductList
-import com.example.kreonculatorapp.firestore.DataOperations
-import com.google.firebase.Firebase
-import com.google.firebase.firestore.firestore
 
 class MainActivity : AppCompatActivity() {
     private lateinit var productEditText: EditText
@@ -23,10 +20,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var newProductButton: Button
     private lateinit var adapter: ArrayAdapter<String>
     private var ingredients: MutableList<String> = mutableListOf()
-    private lateinit var fakeButton: Button
 
-    val db = Firebase.firestore
-    private val dbOperations = DataOperations(db)
+    companion object {
+        private const val REQUEST_CODE_SELECT_PRODUCT = 1
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         productsList = findViewById(R.id.productsList)
         ingredients = ArrayList()
         newProductButton = findViewById(R.id.newMealButton)
-        fakeButton = findViewById(R.id.fakeButton)
 
         adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, ingredients)
         productsList.adapter = adapter
@@ -54,9 +50,10 @@ class MainActivity : AppCompatActivity() {
         addButton.setOnClickListener {
             val product = productEditText.text.toString()
             val grammature = grammatureEditText.text.toString()
+
             if (product.isNotEmpty() && grammature.isNotEmpty()) {
-                val product = "$product - $grammature g"
-                ingredients.add(product)
+                val ingredient = "$product - $grammature g"
+                ingredients.add(ingredient)
                 refreshIngredientList()
             } else {
                 Toast.makeText(this, "Please fill all fields!", Toast.LENGTH_SHORT).show()
@@ -68,9 +65,19 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        fakeButton.setOnClickListener {
+        productEditText.setOnClickListener {
             val intent = Intent(this, ProductList::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, REQUEST_CODE_SELECT_PRODUCT)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_SELECT_PRODUCT && resultCode == RESULT_OK) {
+            val selectedProduct = data?.getStringExtra("selected_product")
+            selectedProduct?.let {
+                productEditText.setText(it)
+            }
         }
     }
 
