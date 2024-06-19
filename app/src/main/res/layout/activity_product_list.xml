@@ -6,42 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".activities.recyclerview.ProductList">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="385dp"
-        android:layout_height="473dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <EditText
+        android:id="@+id/searchEditText"
+        android:layout_width="365dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="72dp"
+        android:hint="Search..."
+        android:imeOptions="actionSearch"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/searchEditText"
-        android:layout_width="279dp"
-        android:layout_height="49dp"
-        android:hint="Search..."
-        android:imeOptions="actionSearch"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="400dp"
+        android:layout_height="564dp"
+        android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/searchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:text="Search"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.272"
-        app:layout_constraintStart_toEndOf="@+id/searchEditText"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.911"
-        tools:ignore="MissingConstraints" />
-
+        app:layout_constraintTop_toBottomOf="@id/searchEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
