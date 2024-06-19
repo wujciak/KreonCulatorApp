@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,7 +24,7 @@ class ProductList : AppCompatActivity(), OnProductClickListener {
     private lateinit var productAdapter: ProductAdapter
     private lateinit var dbOperations: DataOperations
     private lateinit var searchEditText: EditText
-    private lateinit var products: List<Product>
+    private val products: MutableList<Product> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,12 +32,18 @@ class ProductList : AppCompatActivity(), OnProductClickListener {
 
         recyclerView = findViewById(R.id.recyclerView)
         searchEditText = findViewById(R.id.searchEditText)
-
         recyclerView.layoutManager = LinearLayoutManager(this)
         dbOperations = DataOperations(Firebase.firestore)
 
         GlobalScope.launch(Dispatchers.Main) {
-            products = dbOperations.getAllProducts()
+            val loadedProducts = dbOperations.getAllProducts()
+            products.clear()
+            products.addAll(loadedProducts)
+            if (products.isNotEmpty()) {
+                Log.d("ProductList", "Products loaded successfully: ${products.size}")
+            } else {
+                Log.d("ProductList", "No products found")
+            }
             setupRecyclerView(products)
         }
 
@@ -47,6 +54,7 @@ class ProductList : AppCompatActivity(), OnProductClickListener {
                 val filteredList = products.filter {
                     it.name.contains(s.toString(), ignoreCase = true)
                 }
+                Log.d("ProductList", "Filtered products count: ${filteredList.size}")
                 setupRecyclerView(filteredList)
             }
 
