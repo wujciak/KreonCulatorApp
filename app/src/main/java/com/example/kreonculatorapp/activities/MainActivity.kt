@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kreonculatorapp.R
 import com.example.kreonculatorapp.activities.recyclerview.ProductList
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initializeViews()
         setupListeners()
+        enableEdgeToEdge()
     }
 
     private fun initializeViews() {
