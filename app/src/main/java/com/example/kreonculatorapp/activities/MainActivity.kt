@@ -7,7 +7,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kreonculatorapp.R
 import com.example.kreonculatorapp.activities.recyclerview.ProductList
@@ -28,13 +27,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        enableEdgeToEdge()
         initializeViews()
         setupListeners()
     }
 
     private fun initializeViews() {
-        supportActionBar?.title = "KreonCulator"
         productEditText = findViewById(R.id.productEditText)
         grammatureEditText = findViewById(R.id.grammatureEditText)
         addButton = findViewById(R.id.addButton)

@@ -12,24 +12,21 @@ interface OnProductClickListener {
     fun onProductClick(product: Product)
 }
 
-class ProductViewModel {
-    val buttonStates: MutableMap<String, Boolean> = mutableMapOf()
-}
-
 class ProductAdapter(
     private val productList: List<Product>,
     private val clickListener: OnProductClickListener
 ) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
-    private val productViewModel = ProductViewModel()
 
     inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val productName: TextView = itemView.findViewById(R.id.productNameTextView)
+        val productName: TextView = itemView.findViewById(R.id.textViewSingleItem)
 
         init {
             itemView.setOnClickListener {
                 val position = adapterPosition
-                val product = productList[position]
-                clickListener.onProductClick(product)
+                if (position != RecyclerView.NO_POSITION) {
+                    val product = productList[position]
+                    clickListener.onProductClick(product)
+                }
             }
         }
     }
