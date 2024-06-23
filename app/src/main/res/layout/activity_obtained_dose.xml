@@ -33,4 +33,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numberOFCaps"
         app:layout_constraintVertical_bias="0.104" />
+
+    <Button
+        android:id="@+id/remindButton"
+        android:layout_width="192dp"
+        android:layout_height="94dp"
+        android:backgroundTint="#E85174"
+        android:text="Remind me in 5 minutes"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.598" />
 </androidx.constraintlayout.widget.ConstraintLayout>

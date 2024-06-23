@@ -1,6 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
 
     <application
         android:allowBackup="true"
@@ -12,12 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KreonCulatorApp.BackgroundImageStyle"
         tools:targetApi="31">
-        <activity
-            android:name=".activities.SignIn"
-            android:exported="true">
+
+        <activity android:name=".activities.SignIn" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -25,9 +26,9 @@
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.ObtainedDose" />
         <activity android:name=".activities.CreateNewProduct" />
-        <activity
-            android:name=".activities.recyclerview.ProductList"
-            android:exported="true" />
-    </application>
+        <activity android:name=".activities.recyclerview.ProductList" android:exported="true" />
 
+        <receiver android:name=".notification.NotificationReceiver" android:exported="false" />
+
+    </application>
 </manifest>

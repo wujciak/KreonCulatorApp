@@ -30,8 +30,7 @@ class DataOperations(private val db: FirebaseFirestore) : FirestoreInterface {
 
             querySnapshot.documents.mapNotNull { it.toObject(Product::class.java) }
         } catch (e: Exception) {
-            // Handle exception
-            emptyList() // Return an empty list or handle error case appropriately
+            emptyList()
         }
     }
 }
