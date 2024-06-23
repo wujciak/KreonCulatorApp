@@ -43,7 +43,7 @@ class CreateNewProduct : AppCompatActivity() {
     private fun setupListeners() {
         addProductButton.setOnClickListener {
             val name = newProductEditText.text.toString()
-            val fat = fatEditText.text.toString().toIntOrNull()
+            val fat = fatEditText.text.toString().toDoubleOrNull()
             if (name.isNotEmpty() && fat != null) {
                 val product = Product(name, fat)
                 GlobalScope.launch(Dispatchers.Main) {

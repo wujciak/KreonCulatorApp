@@ -4,5 +4,5 @@ import com.google.firebase.firestore.PropertyName
 
 data class Product (
     @get:PropertyName("name") @set:PropertyName("name") var name: String = "",
-    @get:PropertyName("fat") @set:PropertyName("fat") var fat: Number = 0.0
+    @get:PropertyName("fat") @set:PropertyName("fat") var fat: Double = 0.0
 )

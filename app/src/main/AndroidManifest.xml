@@ -23,6 +23,7 @@
         </activity>
         <activity android:name=".activities.Register" />
         <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.ObtainedDose" />
         <activity android:name=".activities.CreateNewProduct" />
         <activity
             android:name=".activities.recyclerview.ProductList"
