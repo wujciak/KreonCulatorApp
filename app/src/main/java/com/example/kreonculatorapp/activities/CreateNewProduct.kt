@@ -1,5 +1,6 @@
 package com.example.kreonculatorapp.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -9,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.kreonculatorapp.R
 import com.example.kreonculatorapp.firestore.DataOperations
 import com.example.kreonculatorapp.firestore.Product
-import com.google.firebase.Firebase
-import com.google.firebase.firestore.firestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -50,10 +51,12 @@ class CreateNewProduct : AppCompatActivity() {
                     dbOperations.addProduct(name, product)
                 }
                 Toast.makeText(this, "Product added successfully!", Toast.LENGTH_SHORT).show()
+                val resultIntent = Intent()
+                setResult(RESULT_OK, resultIntent)
+                finish()
             } else {
                 Toast.makeText(this, "Please fill all fields!", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
 }

@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val REQUEST_CODE_SELECT_PRODUCT = 1
+        private const val REQUEST_CODE_CREATE_PRODUCT = 2
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 
         newProductButton.setOnClickListener {
             val intent = Intent(this, CreateNewProduct::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, REQUEST_CODE_CREATE_PRODUCT)
         }
 
         productEditText.setOnClickListener {
@@ -110,6 +111,8 @@ class MainActivity : AppCompatActivity() {
             selectedProduct?.let {
                 productEditText.setText(it)
             }
+        } else if (requestCode == REQUEST_CODE_CREATE_PRODUCT && resultCode == RESULT_OK) {
+            Toast.makeText(this, "New product added successfully!", Toast.LENGTH_SHORT).show()
         }
     }
 
