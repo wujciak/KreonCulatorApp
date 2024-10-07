@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kreonculatorapp.R
-import com.example.kreonculatorapp.activities.recyclerview.ProductList
+import com.example.kreonculatorapp.recyclerview.ProductList
 import com.example.kreonculatorapp.firestore.DataOperations
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers

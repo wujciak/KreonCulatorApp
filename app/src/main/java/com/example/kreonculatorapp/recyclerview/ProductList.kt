@@ -1,4 +1,4 @@
-package com.example.kreonculatorapp.activities.recyclerview
+package com.example.kreonculatorapp.recyclerview
 
 import android.app.Activity
 import android.content.Intent

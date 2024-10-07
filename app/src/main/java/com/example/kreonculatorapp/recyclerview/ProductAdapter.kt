@@ -1,4 +1,4 @@
-package com.example.kreonculatorapp.activities.recyclerview
+package com.example.kreonculatorapp.recyclerview
 
 import android.view.LayoutInflater
 import android.view.View

@@ -1,11 +1,8 @@
 package com.example.kreonculatorapp.activities
 
-import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Context
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -13,15 +10,17 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.Data
+import androidx.work.WorkManager
+import java.util.concurrent.TimeUnit
 import com.example.kreonculatorapp.R
-import com.example.kreonculatorapp.notification.NotificationReceiver
-import java.util.Calendar
+import com.example.kreonculatorapp.notification.NotificationWorker
 
 class ObtainedDose : AppCompatActivity() {
     private lateinit var remindButton: Button
     lateinit var notificationManager: NotificationManager
     private val channelId = "i.apps.notifications"
-    private val NOTIFICATION_ID = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,12 +28,10 @@ class ObtainedDose : AppCompatActivity() {
         enableEdgeToEdge()
         initializeViews()
         setupListeners()
-
         val result = intent.getIntExtra("result", 0)
         val resultTextView = findViewById<TextView>(R.id.result)
         resultTextView.text = result.toString()
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
         createNotificationChannel()
     }
 
@@ -62,28 +59,18 @@ class ObtainedDose : AppCompatActivity() {
     }
 
     private fun scheduleNotification() {
-        Log.d("ObtainedDose", "Scheduling notification")
-        val intent = Intent(this, NotificationReceiver::class.java).apply {
-            putExtra(NotificationReceiver.NOTIFICATION_ID, NOTIFICATION_ID)
-        }
-        val pendingIntent = PendingIntent.getBroadcast(
-            this,
-            NOTIFICATION_ID,
-            intent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
+        val notificationId = System.currentTimeMillis().toInt()
 
-        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val triggerTime = Calendar.getInstance().timeInMillis + 2000 // 2 seconds
+        val data = Data.Builder()
+            .putInt(NotificationWorker.NOTIFICATION_ID, notificationId)
+            .build()
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            if (alarmManager.canScheduleExactAlarms()) {
-                alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent)
-                Log.d("ObtainedDose", "Exact alarm set for API level S+")
-            }
-        } else {
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent)
-            Log.d("ObtainedDose", "Exact alarm set for API level below S")
-        }
+        val delay = 5L // 5 minutes
+        val workRequest = OneTimeWorkRequestBuilder<NotificationWorker>()
+            .setInputData(data)
+            .setInitialDelay(delay, TimeUnit.MINUTES)
+            .build()
+
+        WorkManager.getInstance(this).enqueue(workRequest)
     }
 }
