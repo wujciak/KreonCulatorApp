@@ -26,9 +26,7 @@
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.ObtainedDose" />
         <activity android:name=".activities.CreateNewProduct" />
-        <activity android:name=".activities.recyclerview.ProductList" android:exported="true" />
-
-        <receiver android:name=".notification.NotificationReceiver" android:exported="false" />
+        <activity android:name=".recyclerview.ProductList" android:exported="true" />
 
     </application>
 </manifest>
