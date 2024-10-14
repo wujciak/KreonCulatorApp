@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="Theme.KreonCulatorApp.BackgroundImageStyle">
-        <item name="android:windowBackground">@drawable/tlo</item>
+        <item name="android:windowBackground">@drawable/background_image</item>
 <!--        <item name="android:statusBarColor">@color/emerald</item>-->
         <item name="colorPrimary">@android:color/transparent</item>
         <item name="windowActionBarOverlay">true</item>
