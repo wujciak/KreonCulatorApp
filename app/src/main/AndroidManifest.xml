@@ -26,7 +26,10 @@
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.ObtainedDose" />
         <activity android:name=".activities.CreateNewProduct" />
-        <activity android:name=".recyclerview.ProductList" android:exported="true" />
+        <activity
+            android:name=".recyclerview.ProductList"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
 
     </application>
 </manifest>
