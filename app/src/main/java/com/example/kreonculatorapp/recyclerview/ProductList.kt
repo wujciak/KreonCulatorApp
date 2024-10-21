@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kreonculatorapp.R
@@ -25,6 +26,8 @@ class ProductList : AppCompatActivity(), OnProductClickListener {
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        val searchView: android.widget.SearchView = findViewById(R.id.searchView)
+
         db.collection("products").get().addOnCompleteListener(OnCompleteListener { task ->
             if (task.isSuccessful) {
                 for (document in task.result) {
@@ -35,6 +38,21 @@ class ProductList : AppCompatActivity(), OnProductClickListener {
                 }
                 val adapter = ProductAdapter(productList, this)
                 recyclerView.adapter = adapter
+
+                searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(query: String?): Boolean {
+                        return false
+                    }
+
+                    override fun onQueryTextChange(newText: String?): Boolean {
+                        val filteredList = productList.filter {
+                            it.name.contains(newText ?: "", ignoreCase = true)
+                        }.toMutableList()
+
+                        adapter.filterList(filteredList)
+                        return true
+                    }
+                })
             } else {
                 Log.d("ProductList", "Error getting documents: ", task.exception)
             }
@@ -47,4 +65,5 @@ class ProductList : AppCompatActivity(), OnProductClickListener {
         setResult(Activity.RESULT_OK, resultIntent)
         finish()
     }
+
 }

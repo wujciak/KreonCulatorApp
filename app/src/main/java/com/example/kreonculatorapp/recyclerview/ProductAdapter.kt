@@ -13,7 +13,7 @@ interface OnProductClickListener {
 }
 
 class ProductAdapter(
-    private val productList: List<Product>,
+    private var productList: List<Product>,
     private val clickListener: OnProductClickListener
 ) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
@@ -43,4 +43,9 @@ class ProductAdapter(
     }
 
     override fun getItemCount() = productList.size
+
+    fun filterList(filteredProducts: MutableList<Product>) {
+        productList = filteredProducts
+        notifyDataSetChanged()
+    }
 }
