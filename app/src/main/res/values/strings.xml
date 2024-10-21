@@ -29,4 +29,5 @@
     <string name="log_in">Log In</string>
     <string name="from_base">from base</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="google_api_key">MY_API_KEY</string>
 </resources>
