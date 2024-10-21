@@ -33,6 +33,7 @@
         android:id="@+id/searchView"
         android:layout_width="353dp"
         android:layout_height="43dp"
+        android:background="#D3D3D3"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
