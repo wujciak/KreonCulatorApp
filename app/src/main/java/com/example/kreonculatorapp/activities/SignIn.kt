@@ -23,9 +23,11 @@ class SignIn : AppCompatActivity() {
         setContentView(R.layout.activity_sign_in)
         enableEdgeToEdge()
         initializeViews()
+
         loginButtonSignIn.setOnClickListener{
             logInRegisterUser()
         }
+
         registerTextViewClickableSignIn.setOnClickListener {
             registerClick(registerTextViewClickableSignIn)
         }
@@ -71,9 +73,9 @@ class SignIn : AppCompatActivity() {
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText(this, "You you have been logged in successfully.", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "You have been logged in successfully.", Toast.LENGTH_LONG).show()
 
-                        goToMainActivity()
+                        goToMenuActivity()
                         finish()
                     } else {
                         Toast.makeText(this, "Login failed!", Toast.LENGTH_LONG).show()
@@ -82,12 +84,11 @@ class SignIn : AppCompatActivity() {
         }
     }
 
-    private fun goToMainActivity() {
+    private fun goToMenuActivity() {
         val user = FirebaseAuth.getInstance().currentUser
         val uid = user?.email.toString()
 
-        //Przekazanie wartości uid
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, MenuActivity::class.java)
         intent.putExtra("uID", uid)
         startActivity(intent)
     }
