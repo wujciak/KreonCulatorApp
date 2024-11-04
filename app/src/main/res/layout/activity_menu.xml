@@ -7,55 +7,56 @@
     android:layout_height="match_parent"
     tools:context=".activities.MenuActivity">
 
+
     <Button
         android:id="@+id/chatButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="312dp"
+        android:layout_width="165dp"
+        android:layout_height="140dp"
+        android:layout_marginBottom="80dp"
         android:backgroundTint="@color/cambridge_blue"
         android:text="CHAT"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/obtainButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="165dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="28dp"
         android:backgroundTint="@color/cambridge_blue"
         android:text="OBTAIN DOSE"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/mapButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menuView"
-        app:layout_constraintVertical_bias="0.578" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/menuView"
-        android:layout_width="405dp"
-        android:layout_height="68dp"
+        android:layout_width="402dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="Menu"
-        android:textSize="38sp"
+        android:textSize="69sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/obtainButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/mapButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="165dp"
+        android:layout_height="140dp"
+        android:layout_marginBottom="32dp"
         android:backgroundTint="@color/cambridge_blue"
-        android:layout_marginBottom="55dp"
         android:text="MAP"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/chatButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

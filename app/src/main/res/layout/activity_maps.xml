@@ -1,9 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
-    android:layout_width="match_parent"
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
-    tools:context=".activities.MapsActivity" />
+android:layout_width="match_parent"
+xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="619dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginEnd="0dp"
+        tools:context=".MapsActivity" />
+
+    <EditText
+        android:id="@+id/searchBar"
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="29dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:autofillHints=""
+        android:background="@android:color/white"
+        android:drawableStart="@android:drawable/ic_menu_search"
+        android:drawablePadding="10dp"
+        android:elevation="6dp"
+        android:hint="@string/search_for_places_nearby"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
+        android:textSize="16sp" />
+</RelativeLayout>
