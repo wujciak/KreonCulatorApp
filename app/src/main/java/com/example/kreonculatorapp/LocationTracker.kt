@@ -42,7 +42,6 @@ class LocationTracker(private val context: Context) {
                 for (location in locationResult.locations) {
                     Log.d("Location Update", "Lat: ${location.latitude}, Lng: ${location.longitude}")
                     _location.postValue(location) // Przekazuje bieżącą lokalizację
-                    sendLocationToDatabase(location.latitude, location.longitude)
                 }
             }
         }
@@ -52,9 +51,5 @@ class LocationTracker(private val context: Context) {
     fun stopTracking() {
         fusedLocationClient.removeLocationUpdates(locationCallback)
         Log.d("LocationTracker", "Śledzenie lokalizacji zatrzymane.")
-    }
-
-    private fun sendLocationToDatabase(latitude: Double, longitude: Double) {
-        Log.d("SendLocation", "Lokalizacja wysłana: Lat: $latitude, Lng: $longitude")
     }
 }
