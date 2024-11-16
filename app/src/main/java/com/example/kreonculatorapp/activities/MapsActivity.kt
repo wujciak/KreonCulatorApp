@@ -10,6 +10,9 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.example.kreonculatorapp.LocationTracker
 import com.example.kreonculatorapp.R
 import com.example.kreonculatorapp.databinding.ActivityMapsBinding
@@ -24,6 +27,8 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.net.PlacesClient
+import org.json.JSONException
+import org.json.JSONObject
 
 /**
  * Aktywność obsługująca mapy Google oraz funkcjonalności nawigacji.
@@ -255,4 +260,57 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             }
         }
     }
+
+    /**
+     * Wyszukuje pobliskie szpitale za pomocą Google Places API i dodaje markery dla każdego
+     * znalezionego miejsca.
+     *
+     * @param location Bieżąca lokalizacja użytkownika.
+     */
+    private fun findNearbyHospitals(location: LatLng) {
+        // Pobierz klucz API zapisany w pliku local.properties (przez R.string)
+        val apiKey = getString(R.string.google_api_key)
+        val locationString = "${location.latitude},${location.longitude}"
+        val radius = 50000  // Promień wyszukiwania w metrach
+        val type = "hospital"
+        val url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$locationString&radius=$radius&type=$type&key=$apiKey"
+
+        // Utwórz żądanie HTTP do API
+        val request = object : StringRequest(
+            Method.GET, url,
+            Response.Listener { response ->
+                try {
+                    // Parsuj odpowiedź JSON
+                    val jsonObject = JSONObject(response)
+                    val results = jsonObject.getJSONArray("results")
+
+                    // Iteracja po wynikach i dodanie markerów na mapie
+                    for (i in 0 until results.length()) {
+                        val place = results.getJSONObject(i)
+                        val latLng = place.getJSONObject("geometry")
+                            .getJSONObject("location")
+                        val lat = latLng.getDouble("lat")
+                        val lng = latLng.getDouble("lng")
+                        val placeName = place.getString("name")
+
+                        // Dodaj marker dla każdego miejsca na mapie
+                        mMap.addMarker(
+                            MarkerOptions()
+                                .position(LatLng(lat, lng))
+                                .title(placeName)
+                        )
+                    }
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+            },
+            Response.ErrorListener { error ->
+                // Obsługa błędów
+                Log.e("MapsActivity", "Błąd podczas wyszukiwania: ${error.message}")
+            }) {}
+
+        // Dodaj żądanie do kolejki
+        Volley.newRequestQueue(this).add(request)
+    }
+
 }
