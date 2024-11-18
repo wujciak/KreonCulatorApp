@@ -28,15 +28,27 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="100dp"
         android:layout_weight="1" />
 
     <!-- Przycisk nawigacji umieszczony poniżej mapy -->
     <Button
-        android:id="@+id/hospital"
+        android:id="@+id/findHospitalsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="HOSPITAL" />
+        android:text="Hospitals" />
+
+    <Button
+        android:id="@+id/findToiletsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Toilets" />
+
+    <Button
+        android:id="@+id/findPharmaciesButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pharmacies" />
 
     <Button
         android:id="@+id/startNavigationButton"

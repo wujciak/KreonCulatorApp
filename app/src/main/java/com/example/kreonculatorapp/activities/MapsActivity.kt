@@ -48,7 +48,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     }
 
     /**
-     * Metoda `onCreate` inicjalizuje widok, klienta lokalizacji i mapę,
+     * Metoda onCreate inicjalizuje widok, klienta lokalizacji i mapę,
      * a także obsługuje przycisk do uruchamiania nawigacji.
      *
      * @param savedInstanceState stan zapisany z poprzednich uruchomień.
@@ -96,12 +96,36 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             }
         }
 
-        val hospitalButton: Button = findViewById(R.id.hospital)
+        val hospitalButton: Button = findViewById(R.id.findHospitalsButton)
         hospitalButton.setOnClickListener {
             fusedLocationClient.lastLocation.addOnSuccessListener { location ->
                 if (location != null) {
                     val currentLatLong = LatLng(location.latitude, location.longitude)
-                    findNearbyHospitals(currentLatLong)
+                    findNearbyPlaces(currentLatLong, "hospital")
+                } else {
+                    Toast.makeText(this, "Nie udało się pobrać lokalizacji. Sprawdź uprawnienia.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        val findToiletsButton: Button = findViewById(R.id.findToiletsButton)
+        findToiletsButton.setOnClickListener {
+            fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+                if (location != null) {
+                    val currentLatLong = LatLng(location.latitude, location.longitude)
+                    findNearbyPlaces(currentLatLong, "toilet")
+                } else {
+                    Toast.makeText(this, "Nie udało się pobrać lokalizacji. Sprawdź uprawnienia.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        val findPharmaciesButton: Button = findViewById(R.id.findPharmaciesButton)
+        findPharmaciesButton.setOnClickListener {
+            fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+                if (location != null) {
+                    val currentLatLong = LatLng(location.latitude, location.longitude)
+                    findNearbyPlaces(currentLatLong, "pharmacy")
                 } else {
                     Toast.makeText(this, "Nie udało się pobrać lokalizacji. Sprawdź uprawnienia.", Toast.LENGTH_SHORT).show()
                 }
@@ -201,11 +225,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     }
 
     /**
-     * Metoda `onMarkerClick` jest wywoływana po kliknięciu markera.
-     * W tej aplikacji kliknięcia markerów nie są specjalnie obsługiwane, więc zwraca `false`.
+     * Metoda onMarkerClick jest wywoływana po kliknięciu markera.
+     * W tej aplikacji kliknięcia markerów nie są specjalnie obsługiwane, więc zwraca false.
      *
      * @param p0 marker, który został kliknięty.
-     * @return `false`, ponieważ nie jest konieczna specjalna obsługa kliknięcia.
+     * @return false, ponieważ nie jest konieczna specjalna obsługa kliknięcia.
      */
     override fun onMarkerClick(p0: Marker) = false
 
@@ -284,22 +308,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         }
     }
 
-    /**
-     * Wyszukuje pobliskie szpitale za pomocą Google Places API i dodaje markery dla każdego
-     * znalezionego miejsca.
-     *
-     * @param location Bieżąca lokalizacja użytkownika.
-     */
-    private fun findNearbyHospitals(location: LatLng) {
+    private fun findNearbyPlaces(location: LatLng, placeType: String) {
         val apiKey = getApiKey() ?: run {
             Log.e("MapsActivity", "API Key not found!")
             return
         }
 
         val locationString = "${location.latitude},${location.longitude}"
-        val radius = 10000  // Promień wyszukiwania w metrach
-        val type = "hospital"
-        val url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$locationString&radius=$radius&type=$type&key=$apiKey"
+        val radius = 5000 // Promień wyszukiwania w metrach
+        val url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$locationString&radius=$radius&type=$placeType&key=$apiKey"
 
         val request = object : StringRequest(
             Method.GET, url,
@@ -308,6 +325,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                 try {
                     val jsonObject = JSONObject(response)
                     val results = jsonObject.getJSONArray("results")
+                    mMap.clear() // Usuń poprzednie markery
                     for (i in 0 until results.length()) {
                         val place = results.getJSONObject(i)
                         val latLng = place.getJSONObject("geometry").getJSONObject("location")
