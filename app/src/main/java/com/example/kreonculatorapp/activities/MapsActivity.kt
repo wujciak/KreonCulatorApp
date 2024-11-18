@@ -95,7 +95,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                 Toast.makeText(this, "Proszę wybrać punkt na mapie, aby rozpocząć nawigację.", Toast.LENGTH_SHORT).show()
             }
         }
+
+        val hospitalButton: Button = findViewById(R.id.hospital)
+        hospitalButton.setOnClickListener {
+            fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+                if (location != null) {
+                    val currentLatLong = LatLng(location.latitude, location.longitude)
+                    findNearbyHospitals(currentLatLong)
+                } else {
+                    Toast.makeText(this, "Nie udało się pobrać lokalizacji. Sprawdź uprawnienia.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
+
 
     /**
      * Zatrzymuje śledzenie lokalizacji przy zamykaniu aktywności.

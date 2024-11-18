@@ -33,6 +33,12 @@
 
     <!-- Przycisk nawigacji umieszczony poniżej mapy -->
     <Button
+        android:id="@+id/hospital"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HOSPITAL" />
+
+    <Button
         android:id="@+id/startNavigationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
