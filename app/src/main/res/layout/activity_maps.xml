@@ -8,12 +8,12 @@
 
     <!-- Pasek wyszukiwania u góry ekranu -->
     <EditText
-        android:id="@+id/searchBar"
+        android:id="@+id/searchEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:padding="12dp"
-        android:hint="@string/wyszukaj_miejsca_w_pobli_u"
+        android:hint="Search nearby places"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         android:elevation="6dp"
@@ -24,6 +24,12 @@
         android:background="@android:color/white" />
 
     <!-- Fragment mapy wyświetlany pod paskiem wyszukiwania -->
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search"/>
+
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
