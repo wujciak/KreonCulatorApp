@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.android.volley.Response
@@ -93,6 +94,25 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                 startNavigation(it.latitude, it.longitude)
             } ?: run {
                 Toast.makeText(this, "Proszę wybrać punkt na mapie, aby rozpocząć nawigację.", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        val searchEditText: EditText = findViewById(R.id.searchEditText)
+        val searchButton: Button = findViewById(R.id.searchButton)
+
+        searchButton.setOnClickListener {
+            val query = searchEditText.text.toString().trim()
+            if (query.isNotEmpty()) {
+                fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+                    if (location != null) {
+                        val currentLatLong = LatLng(location.latitude, location.longitude)
+                        findNearbyPlaces(currentLatLong, query)
+                    } else {
+                        Toast.makeText(this, "Nie udało się pobrać lokalizacji. Sprawdź uprawnienia.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } else {
+                Toast.makeText(this, "Proszę wpisać frazę do wyszukania.", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -308,7 +328,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         }
     }
 
-    private fun findNearbyPlaces(location: LatLng, placeType: String) {
+    private fun findNearbyPlaces(location: LatLng, query: String) {
         val apiKey = getApiKey() ?: run {
             Log.e("MapsActivity", "API Key not found!")
             return
@@ -316,38 +336,43 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
         val locationString = "${location.latitude},${location.longitude}"
         val radius = 5000 // Promień wyszukiwania w metrach
-        val url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$locationString&radius=$radius&type=$placeType&key=$apiKey"
+        val url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$locationString&radius=$radius&keyword=$query&key=$apiKey"
 
         val request = object : StringRequest(
             Method.GET, url,
             Response.Listener { response ->
                 Log.d("API Response", response)
                 try {
-                    val jsonObject = JSONObject(response)
-                    val results = jsonObject.getJSONArray("results")
-                    mMap.clear() // Usuń poprzednie markery
+                    val jsonResponse = JSONObject(response)
+                    val results = jsonResponse.getJSONArray("results")
+
+                    mMap.clear() // Czyść mapę z poprzednich markerów
+
                     for (i in 0 until results.length()) {
                         val place = results.getJSONObject(i)
-                        val latLng = place.getJSONObject("geometry").getJSONObject("location")
-                        val lat = latLng.getDouble("lat")
-                        val lng = latLng.getDouble("lng")
-                        val placeName = place.getString("name")
+                        val loc = place.getJSONObject("geometry").getJSONObject("location")
+                        val lat = loc.getDouble("lat")
+                        val lng = loc.getDouble("lng")
+                        val name = place.getString("name")
 
-                        mMap.addMarker(
-                            MarkerOptions()
-                                .position(LatLng(lat, lng))
-                                .title(placeName)
-                        )
+                        val markerOptions = MarkerOptions()
+                            .position(LatLng(lat, lng))
+                            .title(name)
+                        mMap.addMarker(markerOptions)
                     }
                 } catch (e: JSONException) {
                     e.printStackTrace()
+                    Toast.makeText(this, "Błąd podczas przetwarzania wyników wyszukiwania.", Toast.LENGTH_SHORT).show()
                 }
             },
             Response.ErrorListener { error ->
-                Log.e("MapsActivity", "Błąd podczas wyszukiwania: ${error.message}")
-            }) {}
+                Log.e("API Error", error.toString())
+                Toast.makeText(this, "Nie udało się pobrać wyników wyszukiwania.", Toast.LENGTH_SHORT).show()
+            }
+        ) {}
 
         Volley.newRequestQueue(this).add(request)
     }
+
 
 }
