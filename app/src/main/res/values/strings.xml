@@ -28,4 +28,9 @@
     <string name="already_have_an_account">Already have an account?</string>
     <string name="log_in">Log In</string>
     <string name="from_base">from base</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="google_api_key">${GOOGLE_MAPS_API_KEY}</string>
+    <string name="search_for_places_nearby">Search for places nearby</string>
+    <string name="wyszukaj_miejsca_w_pobli_u">Wyszukaj miejsca w pobliżu</string>
+    <string name="nawiguj_do_celu">Nawiguj do celu</string>
 </resources>
