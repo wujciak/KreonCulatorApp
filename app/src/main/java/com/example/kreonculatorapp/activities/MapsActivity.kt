@@ -251,7 +251,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
      * @param p0 marker, który został kliknięty.
      * @return false, ponieważ nie jest konieczna specjalna obsługa kliknięcia.
      */
-    override fun onMarkerClick(p0: Marker) = false
+    override fun onMarkerClick(marker: Marker): Boolean {
+        // Pobierz pozycję klikniętego markera i ustaw jako wybraną lokalizację
+        selectedLocation = marker.position
+        Toast.makeText(this, "Wybrano punkt: ${marker.title}", Toast.LENGTH_SHORT).show()
+        return false // Zwracamy false, aby zachować domyślne zachowanie (np. animację kliknięcia)
+    }
+
 
     /**
      * Sprawdza uprawnienia lokalizacji. Jeśli nie są one przyznane, prosi użytkownika o ich udzielenie.
