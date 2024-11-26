@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     tools:context=".activities.MapsActivity"
     android:fitsSystemWindows="true">
 
@@ -25,11 +27,15 @@
         android:background="@android:color/white" />
 
     <!-- Fragment mapy wyświetlany pod paskiem wyszukiwania -->
+
     <Button
         android:id="@+id/searchButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search"/>
+        android:backgroundTint="@color/cambridge_blue"
+        android:gravity="center_vertical"
+        android:text="Search"
+        app:cornerRadius="16dp" />
 
     <fragment
         android:id="@+id/map"
@@ -41,28 +47,32 @@
     <!-- Przycisk nawigacji umieszczony poniżej mapy -->
     <Button
         android:id="@+id/findHospitalsButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/cambridge_blue"
         android:text="Hospitals" />
 
     <Button
         android:id="@+id/findToiletsButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/cambridge_blue"
         android:text="Toilets" />
 
     <Button
         android:id="@+id/findPharmaciesButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/cambridge_blue"
         android:text="Pharmacies" />
 
     <Button
         android:id="@+id/startNavigationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_marginBottom="16dp"
-        android:text="@string/nawiguj_do_celu" />
+        android:backgroundTint="@color/cambridge_blue"
+        android:text="@string/nawiguj_do_celu"
+        app:cornerRadius="16dp" />
 
 </LinearLayout>
