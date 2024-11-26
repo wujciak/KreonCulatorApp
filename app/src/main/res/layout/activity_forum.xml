@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:visibility="visible"
+    android:fitsSystemWindows="true">
+
+    <Button
+        android:id="@+id/forum1Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/emerald"
+        android:text="Forum 1"
+        android:textColor="@color/black"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/forum2Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/emerald"
+        android:textColor="@color/black"
+        android:text="Forum 2" />
+
+    <Button
+        android:id="@+id/forum3Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/emerald"
+        android:textColor="@color/black"
+        android:text="Forum 3" />
+</LinearLayout>

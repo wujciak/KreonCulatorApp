@@ -21,8 +21,8 @@ class ChatActivity : AppCompatActivity() {
     private val messagesList = mutableListOf<Message>()
     private val chatRepository = ChatRepository()
 
-    private val chatId = "exampleChatId" // W praktyce pobierzesz to np. z Intent lub SharedPreferences
-    private val currentUserId = "currentUserId" // Pobierz z FirebaseAuth lub innego źródła
+    private val chatId: String by lazy { intent.getStringExtra("chatId") ?: "defaultChatId" }
+    private val currentUserId = "currentUserId"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +60,6 @@ class ChatActivity : AppCompatActivity() {
                         messageEditText.text.clear()
                     },
                     onFailure = { exception ->
-                        // Obsługa błędu
                         exception.printStackTrace()
                     }
                 )

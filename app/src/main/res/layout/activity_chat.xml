@@ -2,6 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     android:padding="8dp">
 
     <!-- RecyclerView do wyświetlania wiadomości -->
@@ -24,15 +25,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Napisz wiadomość..."
             android:background="@android:drawable/editbox_background"
-            android:padding="8dp" />
+            android:hint="Send message..."
+            android:padding="10dp" />
 
         <!-- Przycisk wysyłania wiadomości -->
         <Button
             android:id="@+id/sendButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wyślij" />
+            android:text="Send" />
     </LinearLayout>
 </LinearLayout>

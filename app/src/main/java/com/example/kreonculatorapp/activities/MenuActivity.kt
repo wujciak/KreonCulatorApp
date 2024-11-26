@@ -16,7 +16,7 @@ class MenuActivity : AppCompatActivity() {
         // Inicjalizacja przycisków
         val obtainButton = findViewById<Button>(R.id.obtainButton)
         val mapButton = findViewById<Button>(R.id.mapButton)
-        val chatButton = findViewById<Button>(R.id.chatButton)
+        val forumButton = findViewById<Button>(R.id.forumButton)
 
         // Ustawienie paddingu dla głównego widoku w oparciu o systemowe marginesy
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -38,8 +38,8 @@ class MenuActivity : AppCompatActivity() {
         }
 
         // Ustawienie OnClickListener dla przycisku chatButton - przejście do ChatActivity
-        chatButton.setOnClickListener {
-            val intent = Intent(this, ChatActivity::class.java)
+        forumButton.setOnClickListener {
+            val intent = Intent(this, ForumActivity::class.java)
             startActivity(intent)
         }
     }
