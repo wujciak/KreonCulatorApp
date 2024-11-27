@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:drawable/editbox_background"
-            android:hint="Send message..."
+            android:hint="Write message..."
             android:padding="10dp" />
 
         <!-- Przycisk wysyłania wiadomości -->

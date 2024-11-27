@@ -47,21 +47,21 @@
     <!-- Przycisk nawigacji umieszczony poniżej mapy -->
     <Button
         android:id="@+id/findHospitalsButton"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/cambridge_blue"
         android:text="Hospitals" />
 
     <Button
         android:id="@+id/findToiletsButton"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/cambridge_blue"
         android:text="Toilets" />
 
     <Button
         android:id="@+id/findPharmaciesButton"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/cambridge_blue"
         android:text="Pharmacies" />
@@ -71,8 +71,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/cambridge_blue"
-        android:text="@string/nawiguj_do_celu"
+        android:backgroundTint="@color/emerald"
+        android:text="Navigate"
         app:cornerRadius="16dp" />
 
 </LinearLayout>
