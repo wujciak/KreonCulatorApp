@@ -26,11 +26,11 @@
 
     <Button
         android:id="@+id/forum1Button"
-        android:layout_width="165dp"
+        android:layout_width="200dp"
         android:layout_height="140dp"
         android:layout_marginBottom="40dp"
         android:backgroundTint="@color/cambridge_blue"
-        android:text="Forum 1"
+        android:text="Przepisy"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/forum2Button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,11 +38,11 @@
 
     <Button
         android:id="@+id/forum2Button"
-        android:layout_width="165dp"
+        android:layout_width="200dp"
         android:layout_height="140dp"
         android:layout_marginBottom="40dp"
         android:backgroundTint="@color/cambridge_blue"
-        android:text="Forum 2"
+        android:text="Dolegliwości"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/forum3Button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,11 +50,11 @@
 
     <Button
         android:id="@+id/forum3Button"
-        android:layout_width="165dp"
+        android:layout_width="200dp"
         android:layout_height="140dp"
         android:layout_marginBottom="60dp"
         android:backgroundTint="@color/cambridge_blue"
-        android:text="Forum 3"
+        android:text="MukoNowinki"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
