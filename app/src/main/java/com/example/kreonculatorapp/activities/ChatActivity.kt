@@ -10,6 +10,7 @@ import com.example.kreonculatorapp.R
 import com.example.kreonculatorapp.firestore.ChatRepository
 import com.example.kreonculatorapp.firestore.Message
 import com.example.kreonculatorapp.recyclerview.MessageAdapter
+import com.google.firebase.auth.FirebaseAuth
 
 class ChatActivity : AppCompatActivity() {
 
@@ -22,7 +23,8 @@ class ChatActivity : AppCompatActivity() {
     private val chatRepository = ChatRepository()
 
     private val chatId: String by lazy { intent.getStringExtra("chatId") ?: "defaultChatId" }
-    private val currentUserId = "currentUserId"
+    private val currentUserId: String
+        get() = FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
