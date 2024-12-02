@@ -11,5 +11,4 @@
 
 ## Upcoming Features:
 - **Interactive Maps:** Find nearby pharmacies and healthcare facilities.
-- **In-App Chat:** Connect with healthcare professionals or other users for advice and support.
-- **Doctor’s Version:** A dedicated version for healthcare providers to assist in dosage management.
+- **In-App Chat:** Connect with other users for advice and support.
