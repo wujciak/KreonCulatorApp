@@ -11,6 +11,7 @@ import com.example.kreonculatorapp.firestore.ChatRepository
 import com.example.kreonculatorapp.firestore.Message
 import com.example.kreonculatorapp.recyclerview.MessageAdapter
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.messaging.FirebaseMessaging
 
 class ChatActivity : AppCompatActivity() {
 
@@ -29,6 +30,8 @@ class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
+
+        FirebaseMessaging.getInstance().subscribeToTopic("new_message")
 
         // Inicjalizacja widoków
         messagesRecyclerView = findViewById(R.id.messagesRecyclerView)
