@@ -1,4 +1,4 @@
-package com.example.kreonculatorapp
+package com.example.kreonculatorapp.location
 
 import android.os.AsyncTask
 import android.util.Log

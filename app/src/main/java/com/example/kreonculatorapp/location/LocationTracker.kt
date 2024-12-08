@@ -1,4 +1,4 @@
-package com.example.kreonculatorapp
+package com.example.kreonculatorapp.location
 
 import android.Manifest
 import android.content.Context

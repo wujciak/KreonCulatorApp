@@ -14,7 +14,7 @@ import androidx.core.app.ActivityCompat
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.kreonculatorapp.LocationTracker
+import com.example.kreonculatorapp.location.LocationTracker
 import com.example.kreonculatorapp.R
 import com.example.kreonculatorapp.databinding.ActivityMapsBinding
 import com.google.android.gms.location.FusedLocationProviderClient

@@ -5,16 +5,17 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MenuActivity">
+    tools:context=".activities.MenuActivity"
+    android:fitsSystemWindows="true">
 
 
     <Button
-        android:id="@+id/chatButton"
+        android:id="@+id/forumButton"
         android:layout_width="165dp"
         android:layout_height="140dp"
         android:layout_marginBottom="80dp"
         android:backgroundTint="@color/cambridge_blue"
-        android:text="CHAT"
+        android:text="FORUM"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +27,7 @@
         android:layout_height="140dp"
         android:layout_marginTop="28dp"
         android:backgroundTint="@color/cambridge_blue"
-        android:text="OBTAIN DOSE"
+        android:text="CALCULATE"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/mapButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +57,7 @@
         android:backgroundTint="@color/cambridge_blue"
         android:text="MAP"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/chatButton"
+        app:layout_constraintBottom_toTopOf="@+id/forumButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
