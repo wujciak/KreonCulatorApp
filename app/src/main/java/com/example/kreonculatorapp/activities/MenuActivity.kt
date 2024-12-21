@@ -8,6 +8,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.kreonculatorapp.R
 
+/**
+ * Klasa MenuActivity obsługuje główne menu aplikacji, umożliwiając użytkownikowi przejście
+ * do różnych funkcjonalności, takich jak główny ekran, mapa czy forum.
+ */
 class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -12,6 +12,10 @@ import com.example.kreonculatorapp.firestore.Message
 import com.example.kreonculatorapp.recyclerview.MessageAdapter
 import com.google.firebase.auth.FirebaseAuth
 
+/**
+ * Activity obsługujące interfejs czatu.
+ * Umożliwia wyświetlanie i wysyłanie wiadomości w czasie rzeczywistym.
+ */
 class ChatActivity : AppCompatActivity() {
 
     private lateinit var messagesRecyclerView: RecyclerView
@@ -26,6 +30,12 @@ class ChatActivity : AppCompatActivity() {
     private val currentUserId: String
         get() = FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
+
+    /**
+     * Metoda onCreate inicjalizuje widoki, adapter oraz zarządza logiką czatu.
+     *
+     * @param savedInstanceState stan zapisany z poprzednich uruchomień.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)

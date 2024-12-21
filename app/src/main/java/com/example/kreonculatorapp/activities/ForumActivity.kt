@@ -6,8 +6,18 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kreonculatorapp.R
 
+/**
+ * Aktywność obsługująca ekran forum, umożliwiająca użytkownikom
+ * wybór i przejście do jednego z dostępnych czatów forumowych.
+ */
 class ForumActivity : AppCompatActivity() {
 
+    /**
+     * Metoda onCreate inicjalizuje widok oraz ustawia akcje dla przycisków
+     * umożliwiających przejście do odpowiednich czatów forumowych.
+     *
+     * @param savedInstanceState Stan zapisany z poprzednich uruchomień aktywności.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forum)
@@ -22,6 +32,11 @@ class ForumActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Otwiera aktywność czatu dla określonego forum.
+     *
+     * @param forumId Identyfikator forum, które użytkownik chce otworzyć.
+     */
     private fun openChatActivity(forumId: String) {
         val intent = Intent(this, ChatActivity::class.java)
         intent.putExtra("chatId", forumId)
