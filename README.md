@@ -8,7 +8,5 @@
 - **Custom Products:** Add your own products to the database with detailed nutritional values.
 - **Intuitive Interface:** Easy navigation through a responsive Recycler View.
 - **Dosage Reminders:** Timely notifications to remind users to take their medication.
-
-## Upcoming Features:
 - **Interactive Maps:** Find nearby pharmacies and healthcare facilities.
 - **In-App Chat:** Connect with other users for advice and support.
