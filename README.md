@@ -1,12 +1,20 @@
-# KreonCulator Application
+# Kreon Calculator
 
-**KreonCulator** is a specialized app designed to help individuals with mucoviscidosis (cystic fibrosis) calculate the required dosage of medicine based on fat consumption. The app simplifies dosage management, making it easier for patients to maintain their treatment plan.
+A mobile application that helps users calculate capsule dosage based on meal fat content.
 
-## Key Features:
-- **User Registration and Login:** Secure and personalized access.
-- **Product Database:** Preloaded database of common foods with nutritional information.
-- **Custom Products:** Add your own products to the database with detailed nutritional values.
-- **Intuitive Interface:** Easy navigation through a responsive Recycler View.
-- **Dosage Reminders:** Timely notifications to remind users to take their medication.
-- **Interactive Maps:** Find nearby pharmacies and healthcare facilities.
-- **In-App Chat:** Connect with other users for advice and support.
+## Technologies Used
+- Kotlin (Android)
+- Firebase Authentication and Firestore
+- Google Maps API
+
+## Features
+- User registration and login using Firebase Authentication.
+- Meal input with ingredient weight and fat content.
+- Personalized dish database for easier tracking.
+- Calculation of necessary capsule dosage based on meal composition.
+- Search for the nearest hospitals and pharmacies using Google Maps API.
+
+## How to Run
+1. Open project in Android Studio.
+2. Configure Firebase credentials.
+3. Build and run the application on emulator or device.
